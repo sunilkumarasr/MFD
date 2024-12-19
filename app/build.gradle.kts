@@ -4,10 +4,6 @@ plugins {
     id ("androidx.navigation.safeargs")
     id ("kotlin-parcelize")
 }
-
-
-
-
 android {
     namespace = "com.royalit.mfd"
     compileSdk = 34
@@ -16,8 +12,8 @@ android {
         applicationId = "com.royalit.mfd"
         minSdk = 24
         targetSdk = 34
-        versionCode = 4
-        versionName = "1.3"
+        versionCode = 5
+        versionName = "1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

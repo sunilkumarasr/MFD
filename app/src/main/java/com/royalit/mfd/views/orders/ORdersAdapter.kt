@@ -47,22 +47,22 @@ lateinit var listOrder:ArrayList<OrderDetailModel>
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
 
 
-        if (listOrder.get(position).orderStatus.equals("3")) {
+        if (listOrder.get(position).status_array?.get(0)?.statusId.equals("3")) {
             holder.txtOrdStatus.background = res.getDrawable(R.drawable.rectangle_order_picked)
             holder.txtOrdStatus.text = "Pending"
-        } else if (listOrder.get(position).orderStatus.equals("4")) {
+        } else if (listOrder.get(position).status_array?.get(0)?.statusId.equals("4")) {
             holder.txtOrdStatus.background =
                 res.getDrawable(R.drawable.rectangle_order_confirmed)
             holder.txtOrdStatus.text = "Confirmed"
-        } else if (listOrder.get(position).orderStatus.equals("5")) {
+        } else if (listOrder.get(position).status_array?.get(0)?.statusId.equals("5")) {
             holder.txtOrdStatus.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txtOrdStatus.text = "Shipping"
-        } else if (listOrder.get(position).orderStatus.equals("6")) {
+        } else if (listOrder.get(position).status_array?.get(0)?.statusId.equals("6")) {
             holder.txtOrdStatus.background =
                 res.getDrawable(R.drawable.rectangle_order_cancel)
             holder.txtOrdStatus.text = "Cancelled"
-        } else if (listOrder.get(position).orderStatus.equals("7")) {
+        } else if (listOrder.get(position).status_array?.get(0)?.statusId.equals("7")) {
             holder.txtOrdStatus.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txtOrdStatus.text = "Delivered"

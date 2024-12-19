@@ -30,8 +30,19 @@ data class OrderDetailModel (
     @SerializedName("created_at"             ) var createdAt            : String?         = null,
     @SerializedName("status"                 ) var status               : String?         = null,
     @SerializedName("payment_method"         ) var paymentMethod        : String?         = null,
+    @SerializedName("status_array") var status_array: List<StatusArray>? = null,
     @SerializedName("address_details"        ) var addressDetails       : AddressDetails? = AddressDetails()
 
+): Parcelable
+
+@Parcelize
+data class StatusArray(
+    @SerializedName("id") var id: String? = null,
+    @SerializedName("order_id") var orderId: String? = null,
+    @SerializedName("status_id") var statusId: String? = null,
+    @SerializedName("date_time") var dateTime: String? = null,
+    @SerializedName("name") var name: String? = null,
+    @SerializedName("value") var value: String? = null
 ): Parcelable
 
 @Parcelize

@@ -185,14 +185,16 @@ class AccountInfoActivity : AppCompatActivity() {
         //single image selection
         if (data != null) {
             selectedImageUri = data.data!!
+
+            val file = File(getRealPathFromURI(selectedImageUri!!))
+            imageName = file.name
+            //set image
+            Glide.with(this)
+                .load(selectedImageUri)
+                .placeholder(R.drawable.img_account)
+                .into(binding.imgProfile)
         }
-        val file = File(getRealPathFromURI(selectedImageUri!!))
-        imageName = file.name
-        //set image
-        Glide.with(this)
-            .load(selectedImageUri)
-            .placeholder(R.drawable.img_account)
-            .into(binding.imgProfile)
+
     }
 
     //update profile

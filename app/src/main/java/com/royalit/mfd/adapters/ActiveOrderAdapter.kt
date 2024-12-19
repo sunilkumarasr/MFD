@@ -46,22 +46,22 @@ class ActiveOrderAdapter(val res: Resources) :
     override fun onBindViewHolder(holder: ActiveORderHolder, position: Int) {
         holder.txt_order.text = "Order #${listCatagories.get(position).uniqueId}"
 
-        if (listCatagories.get(position).orderStatus.equals("3")) {
+        if (listCatagories.get(position).status_array?.get(0)?.statusId.equals("3")) {
             holder.txt_order_status.background = res.getDrawable(R.drawable.rectangle_order_picked)
             holder.txt_order_status.text = "Pending"
-        } else if (listCatagories.get(position).orderStatus.equals("4")) {
+        } else if (listCatagories.get(position).status_array?.get(0)?.statusId.equals("4")) {
             holder.txt_order_status.background =
                 res.getDrawable(R.drawable.rectangle_order_confirmed)
             holder.txt_order_status.text = "Confirmed"
-        } else if (listCatagories.get(position).orderStatus.equals("5")) {
+        } else if (listCatagories.get(position).status_array?.get(0)?.statusId.equals("5")) {
             holder.txt_order_status.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txt_order_status.text = "Shipping"
-        } else if (listCatagories.get(position).orderStatus.equals("6")) {
+        } else if (listCatagories.get(position).status_array?.get(0)?.statusId.equals("6")) {
             holder.txt_order_status.background =
                 res.getDrawable(R.drawable.rectangle_order_cancel)
             holder.txt_order_status.text = "Cancelled"
-        } else if (listCatagories.get(position).orderStatus.equals("7")) {
+        } else if (listCatagories.get(position).status_array?.get(0)?.statusId.equals("7")) {
             holder.txt_order_status.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txt_order_status.text = "Delivered"
