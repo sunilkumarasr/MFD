@@ -71,7 +71,7 @@ class CartAdapter(lwn:LifecycleOwner) : RecyclerView.Adapter<CartAdapter.CartVie
 
         Glide.with(holder.img_product.context)
             .load("${RetrofitClient.PRODUCT_IMAGE_PATH}/${cartModel.image}")
-            .placeholder(holder.img_product.context.getDrawable(R.drawable.top_logo))
+            .placeholder(holder.img_product.context.getDrawable(R.drawable.loading_ic))
             .centerCrop()
             .into(holder.img_product);
 

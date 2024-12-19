@@ -46,10 +46,7 @@ class ActiveOrderAdapter(val res: Resources) :
     override fun onBindViewHolder(holder: ActiveORderHolder, position: Int) {
         holder.txt_order.text = "Order #${listCatagories.get(position).uniqueId}"
 
-        if (listCatagories.get(position).orderStatus.equals("2")) {
-            holder.txt_order_status.background = res.getDrawable(R.drawable.rectangle_order_picked)
-            holder.txt_order_status.text = "InActive"
-        } else if (listCatagories.get(position).orderStatus.equals("3")) {
+        if (listCatagories.get(position).orderStatus.equals("3")) {
             holder.txt_order_status.background = res.getDrawable(R.drawable.rectangle_order_picked)
             holder.txt_order_status.text = "Pending"
         } else if (listCatagories.get(position).orderStatus.equals("4")) {
@@ -59,21 +56,21 @@ class ActiveOrderAdapter(val res: Resources) :
         } else if (listCatagories.get(position).orderStatus.equals("5")) {
             holder.txt_order_status.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
-            holder.txt_order_status.text = "Picked Up"
+            holder.txt_order_status.text = "Shipping"
         } else if (listCatagories.get(position).orderStatus.equals("6")) {
             holder.txt_order_status.background =
-                res.getDrawable(R.drawable.rectangle_order_completed)
-            holder.txt_order_status.text = "In Progress"
+                res.getDrawable(R.drawable.rectangle_order_cancel)
+            holder.txt_order_status.text = "Cancelled"
         } else if (listCatagories.get(position).orderStatus.equals("7")) {
             holder.txt_order_status.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txt_order_status.text = "Delivered"
         } else {
+            holder.txt_order_status.visibility = View.GONE
             holder.txt_order_status.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txt_order_status.text = "Active"
         }
-
 
 
         //date

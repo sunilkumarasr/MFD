@@ -61,7 +61,7 @@
                 android:id="@+id/img_profile"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/img_account_info"
+                android:src="@drawable/dummy_profile"
                 app:civ_border_color="@color/pink"
                 app:civ_border_width="1dp"/>
 

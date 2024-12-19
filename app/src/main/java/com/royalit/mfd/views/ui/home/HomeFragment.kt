@@ -187,7 +187,7 @@ class HomeFragment : Fragment() {
                         if(listActiveOrders.size>0)
                         {
                             binding.lnrEmpty.visibility=View.GONE
-                        }else{
+                        }else {
                             binding.lnrEmpty.visibility=View.VISIBLE
                         }
                         Log.d("users_order_data", "users_order_data ${listActiveOrders?.size}")

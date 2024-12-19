@@ -40,9 +40,8 @@ class ServiceHomeAdapter: RecyclerView.Adapter<ServiceHomeAdapter.ServiceCategor
         Log.d("Image path","image Path $CATEGORY_IMAGE_PATH/${listCatagories.get(position).image}")
         holder.txt_title.text=listCatagories.get(position).name
         Glide.with(holder.img_service.context)
-
             .load("$CATEGORY_IMAGE_PATH/${listCatagories.get(position).image}")
-            .placeholder(holder.img_service.context.getDrawable(R.drawable.top_logo))
+            .placeholder(holder.img_service.context.getDrawable(R.drawable.loading_ic))
 
         .into(holder.img_service);
 

@@ -304,7 +304,7 @@ class AccountInfoActivity : AppCompatActivity() {
                         userData.get(0).profileImage?.let { profileImage ->
                             Glide.with(this@AccountInfoActivity)
                                 .load("${RetrofitClient.Profile_Image_PAth}/$profileImage")
-                                .placeholder(R.drawable.img_account)
+                                .placeholder(R.drawable.dummy_profile)
                                 .into(binding.imgProfile)
                         }
 

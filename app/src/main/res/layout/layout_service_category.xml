@@ -11,7 +11,7 @@
         android:layout_width="@dimen/_80dp"
         android:layout_height="@dimen/_80dp"
         android:layout_margin="@dimen/_8dp"
-        android:src="@drawable/top_logo"/>
+        android:src="@drawable/loading_ic"/>
 
     <com.royalit.mfd.customviews.CustomTextView
         android:id="@+id/txt_title"

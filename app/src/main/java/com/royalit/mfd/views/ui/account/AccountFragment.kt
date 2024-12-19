@@ -60,7 +60,7 @@ class AccountFragment : Fragment() {
         if (img_profile != null) {
             Glide.with(requireActivity())
                 .load("${RetrofitClient.Profile_Image_PAth}/$profileImage")
-                .placeholder(R.drawable.img_account)
+                .placeholder(R.drawable.dummy_profile)
                 .into(img_profile)
         }
 

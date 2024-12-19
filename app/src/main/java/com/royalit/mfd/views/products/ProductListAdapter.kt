@@ -82,10 +82,8 @@ lateinit var prodcuList:ArrayList<ProductModel>
         holder.txt_net_price.text="₹ ${productModel.discountPrice}"
         holder.txt_descriptiom.text="${productModel.description}"
         Glide.with(holder.img_product.context)
-
             .load("${RetrofitClient.PRODUCT_IMAGE_PATH}/${productModel.image}")
-            .placeholder(holder.img_product.context.getDrawable(R.drawable.top_logo))
-
+            .placeholder(holder.img_product.context.getDrawable(R.drawable.loading_ic))
             .into(holder.img_product);
         Log.d("Image path","image Path ${RetrofitClient.PRODUCT_IMAGE_PATH}/${productModel.image}")
 

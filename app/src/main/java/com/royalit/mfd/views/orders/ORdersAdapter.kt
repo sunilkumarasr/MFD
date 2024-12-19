@@ -47,10 +47,7 @@ lateinit var listOrder:ArrayList<OrderDetailModel>
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
 
 
-        if (listOrder.get(position).orderStatus.equals("2")) {
-            holder.txtOrdStatus.background = res.getDrawable(R.drawable.rectangle_order_picked)
-            holder.txtOrdStatus.text = "InActive"
-        } else if (listOrder.get(position).orderStatus.equals("3")) {
+        if (listOrder.get(position).orderStatus.equals("3")) {
             holder.txtOrdStatus.background = res.getDrawable(R.drawable.rectangle_order_picked)
             holder.txtOrdStatus.text = "Pending"
         } else if (listOrder.get(position).orderStatus.equals("4")) {
@@ -60,16 +57,17 @@ lateinit var listOrder:ArrayList<OrderDetailModel>
         } else if (listOrder.get(position).orderStatus.equals("5")) {
             holder.txtOrdStatus.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
-            holder.txtOrdStatus.text = "Picked Up"
+            holder.txtOrdStatus.text = "Shipping"
         } else if (listOrder.get(position).orderStatus.equals("6")) {
             holder.txtOrdStatus.background =
-                res.getDrawable(R.drawable.rectangle_order_completed)
-            holder.txtOrdStatus.text = "In Progress"
+                res.getDrawable(R.drawable.rectangle_order_cancel)
+            holder.txtOrdStatus.text = "Cancelled"
         } else if (listOrder.get(position).orderStatus.equals("7")) {
             holder.txtOrdStatus.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txtOrdStatus.text = "Delivered"
         } else {
+            holder.txtOrdStatus.visibility = View.GONE
             holder.txtOrdStatus.background =
                 res.getDrawable(R.drawable.rectangle_order_completed)
             holder.txtOrdStatus.text = "Active"
