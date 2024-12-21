@@ -1,5 +1,6 @@
 package com.royalit.mfd.views
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,14 +9,18 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
 import com.royalit.mfd.R
 import com.royalit.mfd.customviews.CustomDialog
 import com.royalit.mfd.databinding.ActivityLoginBinding
 import com.royalit.mfd.models.LoginResponse
+import com.royalit.mfd.services.RetrofitClient
 import com.royalit.mfd.services.RetrofitClient.apiInterface
+import com.royalit.mfd.utils.MyPref
 import com.royalit.mfd.utils.Utils
 import com.royalit.mfd.utils.Utils.Companion.checkConnectivity
 import com.royalit.mfd.utils.Utils.Companion.showMessage
+import com.royalit.mfd.views.home.DashboardActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -100,15 +105,19 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 if (strRes!!.status == "200") {
-                    val intent = Intent(applicationContext, OTPActivity::class.java)
-                    val email_ = strRes!!.data!!.userData!!.email
+//                    val intent = Intent(applicationContext, OTPActivity::class.java)
+//                    val email_ = strRes!!.data!!.userData!!.email
+//                    val user_id = strRes!!.data!!.userData!!.userId
+//                    Log.d("email_", email_ + "")
+//                    intent.putExtra("email_", email_)
+//                    intent.putExtra("password", password)
+//                    intent.putExtra("user_id", user_id)
+//                    startActivity(intent)
+//                    finish()
+
                     val user_id = strRes!!.data!!.userData!!.userId
-                    Log.d("email_", email_ + "")
-                    intent.putExtra("email_", email_)
-                    intent.putExtra("password", password)
-                    intent.putExtra("user_id", user_id)
-                    startActivity(intent)
-                    finish()
+                    otpVerifyFun(user_id)
+
                     return
                 }
                 /* val gson=Gson()
@@ -124,6 +133,62 @@ class LoginActivity : AppCompatActivity() {
         }
         )
         // startActivity(Intent(applicationContext,OTPActivity::class.java))
+    }
+
+
+    fun otpVerifyFun(userId: String?) {
+        var hashMap = HashMap<String, String> (2)
+        hashMap.putIfAbsent("user_id",userId.toString());
+        hashMap.putIfAbsent("otp_number","123456");
+        if(!Utils.checkConnectivity(applicationContext))
+        {
+            Utils.showMessage("Please check your connection ", applicationContext)
+            return
+        }
+        //showMessage("Calling ",applicationContext)
+        val customDialog= CustomDialog(applicationContext);
+        customDialog.showDialog(this@LoginActivity,true)
+        RetrofitClient.apiInterface.verifyOtp(hashMap).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                customDialog.closeDialog()
+                var strRes= response.body();
+                //strRes=strRes.replace("!!","")
+                Log.d("strRes ",strRes.toString());
+                if(strRes!!.status=="200")
+                {
+                    val gson= Gson()
+                    Log.d("OBJECT TO JSON","ONECT TO JSON ${gson.toJson(strRes!!.data!!.userData)}")
+
+                    if(strRes!!.data!!.userData?.userId==null)
+                    {
+                        return
+                    }
+
+                    val sharedPref = getSharedPreferences("MyPref", Context.MODE_PRIVATE)
+                    val editor = sharedPref.edit()
+                    editor.putString("full_name", strRes!!.data!!.userData?.full_name ?: "")
+                    editor.putString("mobile", strRes!!.data!!.userData?.mobile ?: "")
+                    editor.apply()
+
+                    MyPref.setUser(applicationContext,gson.toJson(strRes!!.data!!.userData))
+                    val intent= Intent(applicationContext, DashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+
+                    return
+                }
+                /* val gson=Gson()
+                val loginResponse= gson.fromJson<LoginResponse>(strRes, LoginResponse::class.java)
+               */  Log.d("","Call succeess ${strRes!!.status}")
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                customDialog.closeDialog()
+                Utils.showMessage("Try again", applicationContext)
+            }
+
+        }
+        )
     }
 
     fun isValidEmail(email: String): Boolean {
