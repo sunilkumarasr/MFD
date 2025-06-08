@@ -162,6 +162,7 @@ class HomeFragment : Fragment() {
         val userId=jsobObj.getString("user_id");*/
         var hashMap = HashMap<String, String>(2)
         hashMap.putIfAbsent("user_id", userId);
+        Log.e("userId_",userId)
         val customDialog = CustomDialog(requireActivity().applicationContext);
         customDialog.showDialog(requireActivity(), true)
         var request = RetrofitClient.apiInterface.orders(hashMap)
