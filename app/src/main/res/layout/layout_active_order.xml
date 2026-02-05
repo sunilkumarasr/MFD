@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_8dp"
+    app:cardCornerRadius="@dimen/_8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/color_order_back">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/_5dp"
+        android:layout_marginRight="@dimen/_5dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_marginEnd="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_3dp"
+            android:layout_height="wrap_content">
+            <com.royalit.mfd.customviews.CustomTextView
+                android:id="@+id/txt_order"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:text="Order #210"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp"/>
+            <com.royalit.mfd.customviews.CustomTextView
+                android:id="@+id/txt_order_status"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="@dimen/_20dp"
+                android:textColor="@color/white"
+                android:text="@string/order_confirmed"
+                android:textSize="@dimen/_12sp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:background="@drawable/rectangle_order_confirmed"/>
+        </LinearLayout>
+
+
+        <com.royalit.mfd.customviews.CustomTextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3dp"
+            android:layout_marginStart="@dimen/_8dp"
+            android:text="Title"
+            android:fontFamily="@font/poppins_regular"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_16sp"/>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3dp"
+            android:layout_marginStart="@dimen/_8dp"
+            android:orientation="horizontal">
+            <com.royalit.mfd.customviews.CustomTextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Sub Total: "
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+            <com.royalit.mfd.customviews.CustomTextView
+                android:id="@+id/txtSub"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5dp"
+                android:text="000"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3dp"
+            android:layout_marginStart="@dimen/_8dp"
+            android:orientation="horizontal">
+            <com.royalit.mfd.customviews.CustomTextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Total: "
+                android:fontFamily="@font/poppins_regular"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.royalit.mfd.customviews.CustomTextView
+                android:id="@+id/txtTotal"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="@dimen/_5dp"
+                android:text="000"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
